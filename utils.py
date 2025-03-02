@@ -1,4 +1,5 @@
 import numpy as np
+import re
 
 def ray_impulse(t, I0, tr, tf):
     # Cálculo de constantes a y b
@@ -20,7 +21,9 @@ def calcular_inductancia(h_G, r_wG):
 
 def calcular_capacitancia(lg, lm, lr):
     ind = np.array([[lg, lm], [lm, lr]])
+    print(ind)
     cap = np.linalg.inv(ind) * (1 / (3e8 * 3e8))
+    print(cap)
     return -cap[0, 1]
 
 def parse_complex(value):
